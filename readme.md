@@ -110,7 +110,7 @@ Exemple de résultat :
 
 ## inject.py
 
-**inject.py** enrichit le XML selon la valeur de `is_commune` : si `is_commune` est `vrai`, l'article de commune lui-même reçoit un attribut et une balise enfant ; si `is_commune` est `faux`, les noms à l'intérieur de la balise `<localisation>` reçoivent des attributs.
+**inject.py** enrichit le XML en fonction du statut `is_commune` de chaque article. Lorsque `is_commune` est vrai, l'article reçoit un attribut `type="commune"` et une balise enfant `<insee>` contenant le code COG. Pour les autres articles (`is_commune = false`), chaque commune identifiée dans `<localisation>` est encapsulée dans une balise `<commune insee="...">` avec son code COG en attribut.
 
 ![inject](inject.svg)
 
@@ -124,7 +124,7 @@ Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier sourc
 
 | Id         | DT53.xml                                               | DT53_injected.xml                                       |
 | ---------- | ------------------------------------------------------ | ------------------------------------------------------- |
-| DT53-00002 | `<definition>ferme, commune de Brécé.</definition>` | `<definition>ferme, commune de Brécé.</definition>` |
+| DT53-00002 | `<definition>ferme, commune de Brécé.</definition>` | `<definition>ferme., commune de Brécé.</definition>` |
 | DT53-00001 | pg="1"                                                 | pg="2"                                                  |
 | DT53-00001 | id="DT53-00001"                                        | id="DT53-00002"                                         |
 | DT53-00001 | id="DT53-00001"                                        | n/a                                                     |
