@@ -61,7 +61,7 @@ Exemple : Pour l'entrée « Villeneuve », la typologie indique « hameau ». Le
 
 ## recognize.py
 
-Il nous faut maintenant extraire les noms de lieux qui permettront l'appariement avec le COG. Pour les communes (`is_commune: true`), le nom est la vedette elle-même. Pour les autres lieux, il faut identifier la ou les communes mentionnées dans le champ `localisation`.
+Il nous faut maintenant extraire les noms de lieux qui permettront l'appariement avec le COG. Pour les communes `is_commune: true`, le nom est la vedette elle-même. Pour les autres lieux, il faut identifier la ou les communes mentionnées dans le champ `localisation`.
 
 #### Reconnaissance d'entités nommées
 
@@ -89,7 +89,7 @@ Trois étapes d'appariement :
 
 | Étape                               | Exemple                                                                  | Match |
 | ----------------------------------- | ------------------------------------------------------------------------ | ----- |
-| key = COG                           | "chateau gontier" correspond à "chateau gontier"                         | exact |
+| key = COG                           | "chateau gontier" correspond à "chateau gontier" ("chateau gontier" = "chateau gontier")                      | exact |
 | first_token(key) = first_token(COG) | "couesmes" correspond à "couesmes  vauce" ("couesmes"  = "couesmes" )    | fuzzy |
 | key ∈ tokens(COG)                   | "vauce" correspond à "couesmes  vauce" ("vauce" ∈ ["couesmes", "vauce"]) | fuzzy |
 
