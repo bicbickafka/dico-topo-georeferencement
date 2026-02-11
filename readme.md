@@ -120,7 +120,7 @@ Ce dernier script garantit qu'aucune information n'a été perdue ou corrompue l
 
 #### Intégrité
 
-Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier source (`DT53.xml`) pour détecter toute altération du contenu original :
+Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier source (`DT53.xml`) pour détecter toute altération du contenu original.
 
 | Id         | DT53.xml                                               | DT53_injected.xml                                       |
 | ---------- | ------------------------------------------------------ | ------------------------------------------------------- |
@@ -131,7 +131,7 @@ Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier sourc
 
 #### Validité
 
-Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau validé (`DT53_validated.xlsx`) et la liste du COG 2011 (`DT53_COG_2011.xlsx`) pour identifier les enrichissements manquants ou invalides :
+Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau validé (`DT53_validated.xlsx`) et la liste du COG 2011 (`DT53_COG_2011.xlsx`) pour identifier les enrichissements manquants ou invalides.
 
 | **Id**     | **Problem**             | **DT03_injected.xml**         | **Correction**                             |
 | ---------- | ----------------------- | ----------------------------- | ------------------------------------------ |
