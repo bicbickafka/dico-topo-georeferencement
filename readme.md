@@ -63,7 +63,7 @@ Il nous faut maintenant extraire les noms de lieux qui permettront l'appariement
 
 #### Reconnaissance d'entités nommées
 
-Le script utilise la bibliothèque SpaCy pour détecter automatiquement les toponymes : entités géopolitiques (GPE) comme les communes, et lieux géographiques (LOC) comme les rivières. Un système de secours basé sur des expressions régulières capture les mots à majuscule initiale en cas d'échec.
+La bibliothèque SpaCy permet de reconnaître automatiquement les entités géopolitiques (GPE) et les lieux géographiques (LOC). Un système de secours basé sur des expressions régulières capture les mots à majuscule initiale en cas d'échec.
 
 #### Normalisation des toponymes
 
@@ -81,7 +81,7 @@ Les toponymes extraits sont normalisés (suppression des articles, apostrophes, 
 
 ## match.py
 
-Ce script associe chaque toponyme normalisé (la clé ou key) à un nom du COG (également normalisé) en trois étapes. Chaque étape annote les résultats avec le nom officiel du COG (`NCCENR`), le code du COG (`INSEE`) et la méthode d'appariement utilisée (`match`).
+Ce script associe chaque toponyme normalisé (clé ou _key_) à un nom du COG (également normalisé) en trois étapes. Chaque correspondance est annotée avec le nom officiel du COG (`NCCENR`), le code du COG (`INSEE`) et la méthode d'appariement utilisée (`match`).
 
 Trois étapes d'appariement :
 
@@ -91,7 +91,7 @@ Trois étapes d'appariement :
 | first_token(key) = first_token(COG) | "couesmes" correspond à "couesmes  vauce" ("couesmes"  = "couesmes" )    | fuzzy |
 | key ∈ tokens(COG)                   | "vauce" correspond à "couesmes  vauce" ("vauce" ∈ ["couesmes", "vauce"]) | fuzzy |
 
-Pour chacune de ces trois étapes, un écart d'une lettre est toléré (distance de Levenshtein ≤ 1). Ainsi "bazouges" peut être relié à "bazougers" avec un match fuzzy. Il arrive également qu'une clé corresponde à plusieurs communes, comme "deneuille" qui renvoie à la fois à "deneuille les chantelle" et à "deneuille les mines". Dans ce cas, les deux sont référencées avec un match fuzzy également.
+Pour chacune de ces trois étapes, un écart d'une lettre est toléré (distance de Levenshtein ≤ 1), permettant par exemple de relier "bazouges" à "bazougers". Lorsqu'une clé correspond à plusieurs communes (par exemple, "deneuille" renvoie à "deneuille les chantelle" et "deneuille les mines"), toutes les correspondance sont référencées avec un match fuzzy également.
 
 Exemple de résultat :
 
@@ -121,7 +121,7 @@ Exemple de résultat :
 
 Ce dernier script garantit qu'aucune information n'a été perdue ou corrompue lors des enrichissements. Il génère un rapport de contrôle (`DT53_controlled.xlsx`) organisé en trois onglets qui vérifient respectivement l'intégrité du fichier XML, la validité des enrichissements et la conformité XML.
 
-### Intégrité
+#### Intégrité
 
 Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier source (`DT53.xml`) pour détecter toute altération du contenu original :
 
@@ -132,7 +132,7 @@ Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier sourc
 | DT03-00001 | id="DT03-00001"                                                | id="DT03-00002"                                                 |
 | DT03-00001 | id="DT03-00001"                                                | n/a                                                             |
 
-### Validité
+#### Validité
 
 Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau validé (`DT53_validated.xlsx`) et la liste du COG 2011 (`DT53_COG_2011.xlsx`) pour identifier les enrichissements manquants ou invalides :
 
@@ -144,7 +144,7 @@ Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau v
 | DT03-00002 | insee_invalid           | `insee="4059"`                       | `insee="3059"`                                      |
 | DT03-13256 | insee_invalid           | `<insee>4003</insee>`                | `<insee>3003</insee>`                               |
 
-### Conformité
+#### Conformité
 
 Cet onglet vérifie la conformité XML du fichier enrichi en s'assurant qu'il est bien formé et valide selon les règles définies par le schéma dicotopo.rng.
 
