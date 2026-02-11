@@ -59,7 +59,7 @@ Exemple : Pour l'entrée « Villeneuve », la typologie indique « hameau ». Le
 
 ## recognize.py
 
-Il nous faut maintenant extraire les noms de lieux qui permettront l'appariement avec le COG. Pour les communes `is_commune: true`, le nom est la vedette elle-même. Pour les autres lieux, il faut identifier la ou les communes mentionnées dans le champ `localisation`.
+Il nous faut maintenant extraire les noms de lieux qui permettront l'appariement avec le COG. Pour les communes `is_commune` est vrai, le nom est la vedette elle-même. Pour les autres lieux, il faut identifier la ou les communes mentionnées dans le champ `localisation`.
 
 #### Reconnaissance d'entités nommées
 
@@ -91,7 +91,7 @@ Trois étapes d'appariement :
 | first_token(key) = first_token(COG) | "couesmes" correspond à "couesmes  vauce" ("couesmes"  = "couesmes" )    | fuzzy |
 | key ∈ tokens(COG)                   | "vauce" correspond à "couesmes  vauce" ("vauce" ∈ ["couesmes", "vauce"]) | fuzzy |
 
-Pour chacune de ces trois étapes, un écart d'une lettre est toléré (distance de Levenshtein ≤ 1), permettant par exemple de relier "bazouges" à "bazougers". Lorsqu'une clé correspond à plusieurs communes (par exemple, "deneuille" renvoie à "deneuille les chantelle" et "deneuille les mines"), toutes les correspondance sont référencées avec un match fuzzy également.
+Pour chacune de ces trois étapes, un écart d'une lettre est toléré (distance de Levenshtein ≤ 1), permettant par exemple de relier "bazouges" à "bazougers". Lorsqu'une clé correspond à plusieurs communes (par exemple, "deneuille" renvoie à "deneuille les chantelle" et "deneuille les mines"), toutes les correspondances sont référencées avec un match fuzzy également.
 
 Exemple de résultat :
 
