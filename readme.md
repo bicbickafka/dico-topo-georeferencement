@@ -127,7 +127,7 @@ Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier sourc
 
 | id         | DT53.xml                                               | DT53_injected.xml                                       |
 | ---------- | ------------------------------------------------------ | ------------------------------------------------------- |
-| DT53-01694 | `<definition>hameau, commune de Montaudin.</definition>` | `<definition>hameau., commune de Montaudin.</definition>` |
+| DT53-00002 | `<definition>ferme, commune de Brécé.</definition>` | `<definition>ferme, commune de Brécé.</definition>` |
 | DT53-00001 | pg="1"                                                 | pg="2"                                                  |
 | DT53-00001 | id="DT53-00001"                                        | id="DT53-00002"                                         |
 | DT53-00001 | id="DT53-00001"                                        | n/a                                                     |
