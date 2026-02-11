@@ -4,6 +4,7 @@ L'application [DicoTopo](https://dicotopo.cths.fr/) réunit en une base de donn�
 
 Les données à enrichir sont des transcriptions du corpus encodées au format XML. À titre d'exemple, la chaîne de traitement est illustrée par le Dictionnaire topographique du département de la Mayenne, disponible sur [Gallica](https://gallica.bnf.fr/ark:/12148/bpt6k204189z/f55.item) : 
 
+![chain](chain.svg)
 
 Vue d'ensemble de la chaîne de traitement :
 
