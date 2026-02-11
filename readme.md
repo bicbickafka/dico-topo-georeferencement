@@ -127,10 +127,10 @@ Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier sourc
 
 | id         | DT53.xml                                               | DT53_injected.xml                                       |
 | ---------- | ------------------------------------------------------ | ------------------------------------------------------- |
-| DT03-00001 | <definition>hameau, commune de Montaudin.</definition> | <definition>hameau., commune de Montaudin.</definition> |
-| DT03-00001 | pg="1"                                                 | pg="2"                                                  |
-| DT03-00001 | id="DT53-00001"                                        | id="DT53-00002"                                         |
-| DT03-00001 | id="DT53-00001"                                        | n/a                                                     |
+| DT53-01694 | `<definition>hameau, commune de Montaudin.</definition>` | `<definition>hameau., commune de Montaudin.</definition>` |
+| DT53-00001 | pg="1"                                                 | pg="2"                                                  |
+| DT53-00001 | id="DT53-00001"                                        | id="DT53-00002"                                         |
+| DT53-00001 | id="DT53-00001"                                        | n/a                                                     |
 
 #### Validité
 
@@ -138,11 +138,11 @@ Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau v
 
 | **id**     | **problem**             | **DT03_injected.xml**         | **correction**                             |
 | ---------- | ----------------------- | ----------------------------- | ------------------------------------------ |
-| DT53-00308 | attribute_insee_missing | <commune>Brécé</commune>      | <commune insee=53042>Brécé</commune>       |
-| DT53-01126 | attribute_type_missing  | <article id=DT53-01126 pg=18> | <article id=DT53-01126 pg=18 type=commune> |
-| DT53-01126 | balise_insee_missing    | n/a                           | <insee>53025</insee>                       |
+| DT53-00308 | attribute_insee_missing | `<commune>Brécé</commune>`      | `<commune insee=53042>Brécé</commune>`       |
+| DT53-01126 | attribute_type_missing  | `<article id=DT53-01126 pg=18>` | `<article id=DT53-01126 pg=18 type=commune>` |
+| DT53-01126 | balise_insee_missing    | n/a                           | `<insee>53025</insee>`                       |
 | DT53-01150 | insee_invalid           | insee=43025                   | insee=53025                                |
-| DT53-01126 | insee_invalid           | <insee>43025</insee>          | <insee>53025</insee>                       |
+| DT53-01126 | insee_invalid           | `<insee>43025</insee>`         | `<insee>53025</insee>`                       |
 
 #### Conformité
 
