@@ -32,7 +32,7 @@ Par exemple, l'extrait
 
 devient :
 
-| champ          | contenu                                                                  |
+| Champ          | Contenu                                                                  |
 | -------------- | ------------------------------------------------------------------------ |
 | `id`           | DT53-23764                                                               |
 | `vedette`      | Villeneuve                                                               |
@@ -42,13 +42,13 @@ devient :
 
 ## classify.py
 
-**classify.py**distingue les communes des autres toponymes (fermes, bois, rivières, etc.). Cette distinction est essentielle car les communes s'apparient directement au COG par leur vedette, tandis que les autres lieux doivent être géolocalisés indirectement via les communes mentionnées dans leur localisation. Ce script analyse la typologie de chaque entrée : si elle mentionne « arrondissement », « canton », « chef-lieu » ou « commune », l'entrée est identifiée comme une commune (`is_commune: true`). Dans tous les autres cas, elle ne l'est pas (`is_commune: false`). Cette règle ne couvre cependant pas tous les cas (notamment lorsque les typologies sont vides), une validation experte reste nécessaire.
+**classify.py** distingue les communes des autres toponymes (fermes, bois, rivières, etc.). Cette distinction est essentielle car les communes s'apparient directement au COG par leur vedette, tandis que les autres lieux doivent être géolocalisés indirectement via les communes mentionnées dans leur localisation. Ce script analyse la typologie de chaque entrée : si elle mentionne « arrondissement », « canton », « chef-lieu » ou « commune », l'entrée est identifiée comme une commune (`is_commune: true`). Dans tous les autres cas, elle ne l'est pas (`is_commune: false`). Cette règle ne couvre cependant pas tous les cas (notamment lorsque les typologies sont vides), une validation experte reste nécessaire.
 
 ![classify](classify.svg)
 
 Exemple : Pour l'entrée « Villeneuve », la typologie indique « hameau ». Le script enregistre donc `is_commune: false`, ce qui signale que ce lieu devra être géoréférencé via les communes mentionnées dans sa localisation.
 
-| champ          | contenu                                                                  |
+| Champ          | Contenu                                                                  |
 | -------------- | ------------------------------------------------------------------------ |
 | `id`           | DT53-23764                                                               |
 | `vedette`      | Villeneuve                                                               |
@@ -95,7 +95,7 @@ Pour chacune de ces trois étapes, un écart d'une lettre est toléré (distance
 
 Exemple de résultat :
 
-| champ          | contenu                                                                  |
+| Champ          | Contenu                                                                  |
 | -------------- | ------------------------------------------------------------------------ |
 | `id`           | DT53-23764                                                               |
 | `vedette`      | Villeneuve                                                               |
@@ -122,7 +122,7 @@ Ce dernier script garantit qu'aucune information n'a été perdue ou corrompue l
 
 Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier source (`DT53.xml`) pour détecter toute altération du contenu original :
 
-| id         | DT53.xml                                               | DT53_injected.xml                                       |
+| Id         | DT53.xml                                               | DT53_injected.xml                                       |
 | ---------- | ------------------------------------------------------ | ------------------------------------------------------- |
 | DT53-00002 | `<definition>ferme, commune de Brécé.</definition>` | `<definition>ferme, commune de Brécé.</definition>` |
 | DT53-00001 | pg="1"                                                 | pg="2"                                                  |
@@ -133,7 +133,7 @@ Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier sourc
 
 Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau validé (`DT53_validated.xlsx`) et la liste du COG 2011 (`DT53_COG_2011.xlsx`) pour identifier les enrichissements manquants ou invalides :
 
-| **id**     | **problem**             | **DT03_injected.xml**         | **correction**                             |
+| **Id**     | **Problem**             | **DT03_injected.xml**         | **Correction**                             |
 | ---------- | ----------------------- | ----------------------------- | ------------------------------------------ |
 | DT53-00308 | attribute_insee_missing | `<commune>Brécé</commune>`      | `<commune insee=53042>Brécé</commune>`       |
 | DT53-01126 | attribute_type_missing  | `<article id=DT53-01126 pg=18>` | `<article id=DT53-01126 pg=18 type=commune>` |
@@ -145,7 +145,7 @@ Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau v
 
 Cet onglet vérifie la conformité XML du fichier enrichi en s'assurant qu'il est bien formé et valide selon les règles définies par le schéma dicotopo.rng.
 
-| **check**       | **status** | **error**                                                  |
+| **Check**       | **Status** | **Error**                                                  |
 | --------------- | ---------- | ---------------------------------------------------------- |
 | well-formedness | passed     | n/a                                                        |
 | dico-topo.rng   | invalid    | line 8: element DICTIONNAIRE failed to validate attributes |
