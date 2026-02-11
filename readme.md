@@ -42,7 +42,7 @@ devient :
 
 ## classify.py
 
-Ce deuxième script distingue les communes des autres toponymes (fermes, bois, rivières, etc.). Cette distinction est essentielle car les communes s'apparient directement au COG par leur vedette, tandis que les autres lieux doivent être géolocalisés indirectement via les communes mentionnées dans leur localisation. Le script **classify.py** analyse la typologie de chaque entrée : si elle mentionne « arrondissement », « canton », « chef-lieu » ou « commune », l'entrée est identifiée comme une commune (`is_commune: true`). Dans tous les autres cas, elle ne l'est pas (`is_commune: false`). Cette règle ne couvre cependant pas tous les cas (notamment lorsque les typologies sont vides), une validation experte reste nécessaire.
+**classify.py**distingue les communes des autres toponymes (fermes, bois, rivières, etc.). Cette distinction est essentielle car les communes s'apparient directement au COG par leur vedette, tandis que les autres lieux doivent être géolocalisés indirectement via les communes mentionnées dans leur localisation. Ce script analyse la typologie de chaque entrée : si elle mentionne « arrondissement », « canton », « chef-lieu » ou « commune », l'entrée est identifiée comme une commune (`is_commune: true`). Dans tous les autres cas, elle ne l'est pas (`is_commune: false`). Cette règle ne couvre cependant pas tous les cas (notamment lorsque les typologies sont vides), une validation experte reste nécessaire.
 
 ![classify](classify.svg)
 
@@ -112,10 +112,7 @@ Exemple de résultat :
 
 **inject.py** enrichit le XML selon la valeur de `is_commune` : si `is_commune` est `vrai`, l'article de commune lui-même reçoit un attribut et une balise enfant ; si `is_commune` est `faux`, les noms à l'intérieur de la balise `<localisation>` reçoivent des attributs.
 
-| is_commune | input                                                                     | output                                                                                                                                                     |
-| ---------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| true       | `<article id="DT53-13633" pg="189">`                                      | `<article id="DT53-13633" pg="189" type="commune">`<br><br>`<insee>53147</insee>`                                                                          |
-| false      | `<localisation>communes de Bazouges et de Château-Gontier</localisation>` | `<localisation>communes de <commune insee="53025">Bazouges</commune></localisation> et de <commune insee="53062">Château-Gontier</commune></localisation>` |
+![inject](inject.svg)
 
 ## control.py
 
