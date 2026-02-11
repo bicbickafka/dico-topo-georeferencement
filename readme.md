@@ -125,24 +125,24 @@ Ce dernier script garantit qu'aucune information n'a été perdue ou corrompue l
 
 Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier source (`DT53.xml`) pour détecter toute altération du contenu original :
 
-| id         | DT53.xml                                                       | DT53_injected.xml                                               |
-| ---------- | -------------------------------------------------------------- | --------------------------------------------------------------- |
-| DT03-00001 | `<definition>hameau, commune de Saint-Martinien.</definition>` | `<definition>hameau., commune de Saint-Martinien.</definition>` |
-| DT03-00001 | pg="1"                                                         | pg="2"                                                          |
-| DT03-00001 | id="DT03-00001"                                                | id="DT03-00002"                                                 |
-| DT03-00001 | id="DT03-00001"                                                | n/a                                                             |
+| id         | DT53.xml                                               | DT53_injected.xml                                       |
+| ---------- | ------------------------------------------------------ | ------------------------------------------------------- |
+| DT03-00001 | <definition>hameau, commune de Montaudin.</definition> | <definition>hameau., commune de Montaudin.</definition> |
+| DT03-00001 | pg="1"                                                 | pg="2"                                                  |
+| DT03-00001 | id="DT53-00001"                                        | id="DT53-00002"                                         |
+| DT03-00001 | id="DT53-00001"                                        | n/a                                                     |
 
 #### Validité
 
 Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau validé (`DT53_validated.xlsx`) et la liste du COG 2011 (`DT53_COG_2011.xlsx`) pour identifier les enrichissements manquants ou invalides :
 
-| **id**     | **problem**             | **DT03_injected.xml**                | **correction**                                      |
-| ---------- | ----------------------- | ------------------------------------ | --------------------------------------------------- |
-| DT03-00001 | attribute_insee_missing | `<commune>Saint-Martinien</commune>` | `<commune insee="3246">Saint-Martinien</commune>`   |
-| DT03-13255 | attribute_type_missing  | `<article id="DT03-13255" pg="207">` | `<article id="DT03-13255" pg="207" type="commune">` |
-| DT03-13255 | balise_insee_missing    | `n/a`                                | `<insee>3002</insee>`                               |
-| DT03-00002 | insee_invalid           | `insee="4059"`                       | `insee="3059"`                                      |
-| DT03-13256 | insee_invalid           | `<insee>4003</insee>`                | `<insee>3003</insee>`                               |
+| **id**     | **problem**             | **DT03_injected.xml**         | **correction**                             |
+| ---------- | ----------------------- | ----------------------------- | ------------------------------------------ |
+| DT53-00308 | attribute_insee_missing | <commune>Brécé</commune>      | <commune insee=53042>Brécé</commune>       |
+| DT53-01126 | attribute_type_missing  | <article id=DT53-01126 pg=18> | <article id=DT53-01126 pg=18 type=commune> |
+| DT53-01126 | balise_insee_missing    | n/a                           | <insee>53025</insee>                       |
+| DT53-01150 | insee_invalid           | insee=43025                   | insee=53025                                |
+| DT53-01126 | insee_invalid           | <insee>43025</insee>          | <insee>53025</insee>                       |
 
 #### Conformité
 
