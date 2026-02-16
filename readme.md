@@ -18,7 +18,7 @@ Vue d'ensemble de la chaîne de traitement :
 
 ## parse.py	
 
-Ce premier script transforme la structure XML en tableau CSV. Il extrait cinq champs par article : l'identifiant, la vedette (le nom du lieu), la définition, la typologie et la localisation (au format JSON).
+Ce premier script transforme la structure XML en tableau Excel. Il extrait cinq champs par article : l'identifiant, la vedette (le nom du lieu), la définition, la typologie et la localisation (au format JSON).
 
 Par exemple, l'extrait
 
