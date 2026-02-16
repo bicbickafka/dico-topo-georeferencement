@@ -8,13 +8,13 @@ Vue d'ensemble de la chaîne de traitement :
 
 | Étape              | Input                                                                                      | Output               |
 | ------------------ | ------------------------------------------------------------------------------------------ | -------------------- |
-| [parse.py](#parsepy)          | DT53.xml                                                                                   | DT53_parsed.xlsx     |
-| [classify.py](#classifypy)        | DT53_parsed.xlsx                                                                           | DT53_classified.xlsx |
-| [recognize.py](#recognizepy)       | DT53_classified.xlsx                                                                       | DT53_recognized.xlsx |
-| [match.py](#matchpy)           | DT53_recognized.xlsx<br>DT53_COG_2011.xlsx                                                 | DT53_matched.xlsx    |
-| (validation experte) | DT53_matched.xlsx                                                                          | DT53_validated.xlsx  |
-| [enrich.py](#injectpy)          | DT53_validated.xlsx                                                                        | DT53_enriched.xml    |
-| [control.py](#controlpy)         | DT53.xml<br>DT53_injected.xml<br>DT53_validated.xlsx<br>DT53_COG_2011.xlsx<br>dicotopo.rng | DT53_controlled.xlsx |
+| [parse.py](#parsepy)          | 1_DT53.xml                                                                                   | 2_DT53_parsed.xlsx     |
+| [classify.py](#classifypy)        | 2_DT53_parsed.xlsx                                                                           | 3_DT53_classified.xlsx |
+| [recognize.py](#recognizepy)       | 3_DT53_classified.xlsx                                                                       | 4_DT53_recognized.xlsx |
+| [match.py](#matchpy)           | 4_DT53_recognized.xlsx<br>4_DT53_COG_2011.xlsx                                                 | 5_DT53_matched.xlsx    |
+| (validation experte) | 5_DT53_matched.xlsx                                                                          | 6_DT53_validated.xlsx  |
+| [enrich.py](#enrichpy)          | 6_DT53_validated.xlsx                                                                        | 7_DT53_enriched.xml    |
+| [control.py](#controlpy)         | 7_DT53_enriched.xml<br>1_DT53.xml<br>6_DT53_validated.xlsx<br>4_DT53_COG_2011.xlsx<br>dicotopo.rng | 8_DT53_controlled.xlsx |
 
 ## parse.py	
 
