@@ -114,6 +114,8 @@ Exemple de résultat :
 
 ![inject](inject.svg)
 
+**to-do : ajout de @precision="approximatif" dans le cas de localisations multiples**
+
 ## control.py
 
 **to-do : https://github.com/chartes/dico-topo/blob/enrichissement_xml_dt/data/_OUTPUT6_VALDATION_PROCEDURE.md**
