@@ -13,7 +13,7 @@ Vue d'ensemble de la chaîne de traitement :
 | [recognize.py](#recognizepy)       | DT53_classified.xlsx                                                                       | DT53_recognized.xlsx |
 | [match.py](#matchpy)           | DT53_recognized.xlsx<br>DT53_COG_2011.xlsx                                                 | DT53_matched.xlsx    |
 | (validation experte) | DT53_matched.xlsx                                                                          | DT53_validated.xlsx  |
-| [inject.py](#injectpy)          | DT53_validated.xlsx                                                                        | DT53_injected.xml    |
+| [enrich.py](#injectpy)          | DT53_validated.xlsx                                                                        | DT53_enriched.xml    |
 | [control.py](#controlpy)         | DT53.xml<br>DT53_injected.xml<br>DT53_validated.xlsx<br>DT53_COG_2011.xlsx<br>dicotopo.rng | DT53_controlled.xlsx |
 
 ## parse.py	
@@ -108,9 +108,9 @@ Exemple de résultat :
 | `INSEE`        | ["53025", "53062"]                                                       |
 | `match`        | ["fuzzy", "exact"]                                                       |
 
-## inject.py
+## enrich.py
 
-**inject.py** enrichit le XML en fonction du statut `is_commune` de chaque article. Lorsque `is_commune` est vrai, l'article reçoit un attribut `type="commune"` et une balise enfant `<insee>` contenant le code COG. Pour les autres articles (`is_commune = false`), chaque commune identifiée dans `<localisation>` est encapsulée dans une balise `<commune insee="...">` avec son code COG en attribut.
+**enrich.py** enrichit le XML en fonction du statut `is_commune` de chaque article. Lorsque `is_commune` est vrai, l'article reçoit un attribut `type="commune"` et une balise enfant `<insee>` contenant le code COG. Pour les autres articles (`is_commune = false`), chaque commune identifiée dans `<localisation>` est encapsulée dans une balise `<commune insee="...">` avec son code COG en attribut.
 
 ![inject](inject.svg)
 
