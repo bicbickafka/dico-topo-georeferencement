@@ -6,17 +6,17 @@ L'application [DicoTopo](https://dicotopo.cths.fr/) réunit en une base de donn�
 
 Vue d'ensemble de la chaîne de traitement :
 
-| Étape              | Input                                                                                      | Output               |
-| ------------------ | ------------------------------------------------------------------------------------------ | -------------------- |
-| [parse.py](#parsepy)          | 1_DT53.xml                                                                                   | 2_DT53_parsed.xlsx     |
-| [classify.py](#classifypy)        | 2_DT53_parsed.xlsx                                                                           | 3_DT53_classified.xlsx |
-| [recognize.py](#recognizepy)       | 3_DT53_classified.xlsx                                                                       | 4.1_DT53_recognized.xlsx |
-| [match.py](#matchpy)           | 4.1_DT53_recognized.xlsx<br>4.2_DT53_COG_2011.xlsx                                                 | 5_DT53_matched.xlsx    |
-| (validation experte) | 5_DT53_matched.xlsx                                                                          | 6_DT53_validated.xlsx  |
-| [enrich.py](#enrichpy)          | 6_DT53_validated.xlsx<br>1_DT53.xml                                                                        | 7_DT53_enriched.xml    |
-| [control.py](#controlpy)         | 7_DT53_enriched.xml<br>6_DT53_validated.xlsx<br>4_DT53_COG_2011.xlsx<br>1_DT53.xml<br>dicotopo.rng | 8_DT53_controlled.xlsx |
+| Scripyt | Input | Output |
+| :--- | :--- | :--- |
+| [01_parse.py](#01_parsepy) | src_DT53.xml | 01_DT53_parsed.xlsx |
+| [02_classify.py](#02_classifypy) | 01_DT53_parsed.xlsx | 02_DT53_classified.xlsx |
+| [03_recognize.py](#03_recognizepy) | 02_DT53_classified.xlsx | 03_DT53_recognized.xlsx |
+| [04_match.py](#04_matchpy) | 03_DT53_recognized.xlsx<br>ref_COG_2011.xlsx | 04_DT53_matched.xlsx |
+| (validation experte) | 04_DT53_matched.xlsx | 05_DT53_validated.xlsx |
+| [06_enrich.py](#06_enrichpy) | 05_DT53_validated.xlsx<br>src_DT53.xml | 06_DT53_enriched.xml |
+| [07_control.py](#07_controlpy) | 06_DT53_enriched.xml<br>05_DT53_validated.xlsx<br>ref_COG_2011.xlsx<br>src_DT53.xml<br>ref_dicotopo.rng | 07_DT53_controlled.xlsx |
 
-## parse.py	
+## 01_parse.py
 
 Ce premier script transforme la structure XML en tableau Excel. Il extrait cinq champs par article : l'identifiant, la vedette (le nom du lieu), la définition, la typologie et la localisation (au format JSON).
 
@@ -40,7 +40,7 @@ devient :
 | `typologie`    | hameau                                                                   |
 | `localisation` | ["commune de Bazouges", "ville de Château-Gontier"]                      |
 
-## classify.py
+## 02_classify.py
 
 **classify.py** distingue les communes des autres toponymes (fermes, bois, rivières, etc.). Cette distinction est nécessaire car les communes s'apparient directement au COG par leur vedette, tandis que les autres lieux doivent être géolocalisés indirectement via les communes mentionnées dans leur localisation. Ce script analyse la typologie de chaque entrée : si elle mentionne « arrondissement », « canton », « chef-lieu » ou « commune », l'entrée est identifiée comme une commune (`is_commune: true`). Dans tous les autres cas, elle ne l'est pas (`is_commune: false`). Cette règle ne couvre cependant pas tous les cas (notamment lorsque les typologies sont vides), une validation experte reste nécessaire.
 
@@ -57,7 +57,7 @@ Exemple : Pour l'entrée « Villeneuve », la typologie indique « hameau ». Le
 | `localisation` | ["commune de Bazouges", "ville de Château-Gontier"]                      |
 | `is_commune`   | false                                                                    |
 
-## recognize.py
+## 03_recognize.py
 
 Il nous faut maintenant extraire les noms de lieux qui permettront l'appariement avec le COG. Pour les communes `is_commune` est vrai, le nom est la vedette elle-même. Pour les autres lieux, il faut identifier la ou les communes mentionnées dans le champ `localisation`.
 
@@ -79,7 +79,7 @@ Les toponymes extraits sont normalisés (suppression des articles, apostrophes, 
 | `is_commune`   | false                                                                    |
 | `commune_norm` | ["bazouges", "chateau gontier"]                                          |
 
-## match.py
+## 04_match.py
 
 Ce script associe chaque toponyme normalisé (clé ou _key_) à un nom du COG (également normalisé) en trois étapes. Chaque correspondance est annotée avec le nom officiel du COG (`NCCENR`), le code du COG (`INSEE`) et la méthode d'appariement utilisée (`match`).
 
@@ -108,7 +108,7 @@ Exemple de résultat :
 | `INSEE`        | ["53025", "53062"]                                                       |
 | `match`        | ["fuzzy", "exact"]                                                       |
 
-## enrich.py
+## 06_enrich.py
 
 **enrich.py** enrichit le XML en fonction du statut `is_commune` de chaque article. Lorsque `is_commune` est vrai, l'article reçoit un attribut `type="commune"` et une balise enfant `<insee>` contenant le code COG. Pour les autres articles (`is_commune = false`), chaque commune identifiée dans `<localisation>` est encapsulée dans une balise `<commune insee="...">` avec son code COG en attribut.
 
@@ -116,7 +116,7 @@ Exemple de résultat :
 
 **to-do : ajout de precision="approximatif" dans le cas de localisations multiples, else precision="certain"**
 
-## control.py
+## 07_control.py
 
 **to-do : https://github.com/chartes/dico-topo/blob/enrichissement_xml_dt/data/_OUTPUT6_VALDATION_PROCEDURE.md**
 
