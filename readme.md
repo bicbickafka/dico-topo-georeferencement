@@ -6,7 +6,7 @@ L'application [DicoTopo](https://dicotopo.cths.fr/) réunit en une base de donn�
 
 Vue d'ensemble de la chaîne de traitement :
 
-| Scripyt | Input | Output |
+| Script | Input | Output |
 | :--- | :--- | :--- |
 | [01_parse.py](#01_parsepy) | src_DT53.xml | 01_DT53_parsed.xlsx |
 | [02_classify.py](#02_classifypy) | 01_DT53_parsed.xlsx | 02_DT53_classified.xlsx |
