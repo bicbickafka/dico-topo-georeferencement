@@ -114,7 +114,7 @@ Exemple de résultat :
 
 ![inject](inject.svg)
 
-**to-do : ajout de precision="approximatif" dans le cas de localisations multiples, else precision="certain"**
+**to-do/tbc : ajout de precision="approximatif" dans le cas de localisations multiples, else precision="certain"**
 
 ## 07_control.py
 
