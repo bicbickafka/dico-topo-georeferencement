@@ -156,4 +156,4 @@ Cet onglet vérifie la conformité XML du fichier enrichi en s'assurant qu'il es
 | dico-topo.rng   | invalid    | line 9: element article failed to validate attributes      |
 | dico-topo.rng   | invalid    | line 10: element vedette has extra content: pg             |
 
-[^1]: Ce géoréférencement permet notamment de trier et filtrer les résultats selon un découpage administratif, de regrouper les lieux par commune d'appartenance, et de travailler aisément à l'échelle nationale, ce que la fragmentation en dictionnaires départementaux rendait complexe et laborieux.
+[^1]: Le géoréférencement permet notamment de trier et filtrer les résultats selon un découpage administratif, de regrouper les lieux par commune d'appartenance, et de travailler aisément à l'échelle nationale, ce que la fragmentation en dictionnaires départementaux rendait complexe et laborieux.
