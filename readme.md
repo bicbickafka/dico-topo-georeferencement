@@ -12,7 +12,7 @@ Vue d'ensemble de la chaîne de traitement :
 | [02_classify.py](#02_classifypy) | 01_DT53_parsed.xlsx | 02_DT53_classified.xlsx |
 | [03_recognize.py](#03_recognizepy) | 02_DT53_classified.xlsx | 03_DT53_recognized.xlsx |
 | [04_match.py](#04_matchpy) | 03_DT53_recognized.xlsx<br>ref_COG_2011.xlsx | 04_DT53_matched.xlsx |
-| (validation experte) | 04_DT53_matched.xlsx | 05_DT53_validated.xlsx |
+| (validation responsable scientifique) | 04_DT53_matched.xlsx | 05_DT53_validated.xlsx |
 | [06_enrich.py](#06_enrichpy) | 05_DT53_validated.xlsx<br>src_DT53.xml | 06_DT53_enriched.xml |
 | [07_control.py](#07_controlpy) | 06_DT53_enriched.xml<br>05_DT53_validated.xlsx<br>ref_COG_2011.xlsx<br>src_DT53.xml<br>ref_dicotopo.rng | 07_DT53_controlled.xlsx |
 
