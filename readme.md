@@ -6,15 +6,19 @@ L'application [DicoTopo](https://dicotopo.cths.fr/) réunit en une base de donn�
 
 Vue d'ensemble de la chaîne de traitement :
 
-| Script | Input | Output |
+| Étape | Input | Output |
 | :--- | :--- | :--- |
-| [01_parse.py](#01_parsepy) | src_DT53.xml | 01_DT53_parsed.xlsx |
-| [02_classify.py](#02_classifypy) | 01_DT53_parsed.xlsx | 02_DT53_classified.xlsx |
-| [03_recognize.py](#03_recognizepy) | 02_DT53_classified.xlsx | 03_DT53_recognized.xlsx |
-| [04_match.py](#04_matchpy) | 03_DT53_recognized.xlsx<br>ref_COG_2011.xlsx | 04_DT53_matched.xlsx |
-| (validation responsable scientifique) | 04_DT53_matched.xlsx | 05_DT53_validated.xlsx |
-| [06_enrich.py](#06_enrichpy) | 05_DT53_validated.xlsx<br>src_DT53.xml | 06_DT53_enriched.xml |
-| [07_control.py](#07_controlpy) | 06_DT53_enriched.xml<br>05_DT53_validated.xlsx<br>ref_COG_2011.xlsx<br>src_DT53.xml<br>ref_dicotopo.rng | 07_DT53_controlled.xlsx |
+| parsage | src_DT53.xml | 01_DT53_parsed.xlsx |
+| categroisation | 01_DT53_parsed.xlsx | 02_DT53_classified.xlsx |
+| reconnaissance d'entités nommées | 02_DT53_classified.xlsx | 03_DT53_recognized.xlsx |
+| liage | 03_DT53_recognized.xlsx<br>ref_COG_2011.xlsx | 04_DT53_matched.xlsx |
+| validation #1 (responsable scientifique) | 04_DT53_matched.xlsx | 05_DT53_validated.xlsx |
+| enrichissement/injection | 05_DT53_validated.xlsx<br>src_DT53.xml | 06_DT53_enriched.xml |
+| validation #2 (06_DT53_enriched.xml aka output6.xml vs. src_DT53.xml) | XXX | XXX |
+| générer des nouveaux ids | XXX | XXX |
+| injecter les nouveaux ids | XXX | XXX |
+| chargement en base | XXX | XXX |
+| validation #3 (output7.xml vs. la db dicotopo.dev) | XXX | XXX |
 
 ## 01_parse.py
 
