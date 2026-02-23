@@ -133,6 +133,10 @@ Formes anciennes
 Validation XML
 Contrôle du formatage
 
+// marguerite
+
+for $a in //article, $c in $a//commune return concat($a/@id, '&#9;', $c/@insee, '&#9;', $c/@precision, '&#9;', $c/text())
+
 ## générer des nouveaux ids
 
 pilot.py
