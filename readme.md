@@ -120,44 +120,48 @@ Exemple de résultat :
 
 **to-do/tbc : ajout de precision="approximatif" dans le cas de localisations multiples, else precision="certain"**
 
-## 07_control.py
+## validation #2 : Tests après enrichissement (output6.xml vs. DT03.xml)
 
-**to-do : https://github.com/chartes/dico-topo/blob/enrichissement_xml_dt/data/_OUTPUT6_VALDATION_PROCEDURE.md**
+https://github.com/chartes/dico-topo/blob/enrichissement_xml_dt/data/_OUTPUT6_VALDATION_PROCEDURE.md :
 
-Ce dernier script garantit qu'aucune information n'a été perdue ou corrompue lors des enrichissements. Il génère un rapport de contrôle (`DT53_controlled.xlsx`) organisé en trois onglets qui vérifient respectivement l'intégrité du fichier XML, la validité des enrichissements et la conformité XML.
+Décomptes
+Vérification des vedettes les plus longues
+Vérification de l’ordre des mots
+Tests xpath
+Gestion des @precision
+Formes anciennes
+Validation XML
+Contrôle du formatage
 
-#### Intégrité
+## générer des nouveaux ids
 
-Cet onglet compare le fichier XML enrichi (`DT53_injected.xml`) au fichier source (`DT53.xml`) pour détecter toute altération du contenu original.
+pilot.py
+dt2db.py
 
-| Id         | DT53.xml                                               | DT53_injected.xml                                       |
-| ---------- | ------------------------------------------------------ | ------------------------------------------------------- |
-| DT53-00002 | `<definition>ferme, commune de Brécé.</definition>` | `<definition>ferme., commune de Brécé.</definition>` |
-| DT53-00001 | pg="1"                                                 | pg="2"                                                  |
-| DT53-00001 | id="DT53-00001"                                        | id="DT53-00002"                                         |
-| DT53-00001 | id="DT53-00001"                                        | n/a                                                     |
+## injecter les nouveaux ids
 
-#### Validité
+insert_new_ids.py
 
-Cet onglet croise le fichier XML enrichi (`DT53_injected.xml`) avec le tableau validé (`DT53_validated.xlsx`) et la liste du COG 2011 (`DT53_COG_2011.xlsx`) pour identifier les enrichissements manquants ou invalides.
+input: output6.xml
+output: ouput7.xml
 
-| **Id**     | **Problem**             | **DT03_injected.xml**         | **Correction**                             |
-| ---------- | ----------------------- | ----------------------------- | ------------------------------------------ |
-| DT53-00308 | attribute_insee_missing | `<commune>Brécé</commune>`      | `<commune insee=53042>Brécé</commune>`       |
-| DT53-01126 | attribute_type_missing  | `<article id=DT53-01126 pg=18>` | `<article id=DT53-01126 pg=18 type=commune>` |
-| DT53-01126 | balise_insee_missing    | n/a                           | `<insee>53025</insee>`                       |
-| DT53-01150 | insee_invalid           | insee=43025                   | insee=53025                                |
-| DT53-01126 | insee_invalid           | `<insee>43025</insee>`         | `<insee>53025</insee>`                       |
+## chargement en base (dicotopo.dev.sqlite)
 
-#### Conformité
+renseigner le fichier bibl_gallica.tsv avec la biblio du nouveau dictionnaire → injecter dans la table "bibl"
 
-Cet onglet vérifie la conformité XML du fichier enrichi en s'assurant qu'il est bien formé et valide selon les règles définies par le schéma dicotopo.rng.
+## validation #3 : Tests après insertion en base (output7.xml vs. dicotopo.dev)
 
-| **Check**       | **Status** | **Error**                                                  |
-| --------------- | ---------- | ---------------------------------------------------------- |
-| well-formedness | passed     | n/a                                                        |
-| dico-topo.rng   | invalid    | line 8: element DICTIONNAIRE failed to validate attributes |
-| dico-topo.rng   | invalid    | line 9: element article failed to validate attributes      |
-| dico-topo.rng   | invalid    | line 10: element vedette has extra content: pg             |
+https://github.com/chartes/dico-topo-app/blob/dev/db/utils/db_manual_check.md :
+
+bibl
+id_register
+place
+place_comment
+place_description
+place_feature_type
+place_old_label
+responsability
+
+
 
 [^1]: Le géoréférencement permet notamment de trier et filtrer les résultats selon un découpage administratif, de regrouper les lieux par commune d'appartenance, et de travailler aisément à l'échelle nationale, ce que la fragmentation en dictionnaires départementaux rendait complexe et laborieux.
