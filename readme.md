@@ -95,7 +95,9 @@ Trois étapes d'appariement :
 | first_token(key) = first_token(COG) | "couesmes" correspond à "couesmes  vauce" ("couesmes"  = "couesmes" )    | fuzzy |
 | key ∈ tokens(COG)                   | "vauce" correspond à "couesmes  vauce" ("vauce" ∈ ["couesmes", "vauce"]) | fuzzy |
 
-Pour chacune de ces trois étapes, un écart d'une lettre est toléré (distance de Levenshtein ≤ 1), permettant par exemple de relier "bazouges" à "bazougers". Lorsqu'une clé correspond à plusieurs communes (par exemple, "Saint-Loup" renvoie à "Saint-Loup-du-Dorat" et "Saint-Loup-du-Gast"), toutes les correspondances sont référencées avec un match fuzzy également.			
+Pour chacune de ces trois étapes, un écart d'une lettre est toléré (distance de Levenshtein ≤ 1), permettant par exemple de relier "bazouges" à "bazougers". Lorsqu'une clé correspond à plusieurs communes (par exemple, "Saint-Loup" renvoie à "Saint-Loup-du-Dorat" et "Saint-Loup-du-Gast"), toutes les correspondances sont référencées avec un match fuzzy également.	
+
+(nuille sur ouette	-->	soulge sur ouette)
 
 Exemple de résultat :
 
