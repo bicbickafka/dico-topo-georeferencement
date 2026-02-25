@@ -139,6 +139,10 @@ Contrôle du formatage
 
 for $a in //article, $c in $a//commune return concat($a/@id, '&#9;', $c/@insee, '&#9;', $c/@precision, '&#9;', $c/text())
 
+checks:
+insee → NCCENR
+NCCENR_norm → commune_dt_norm
+
 ## générer des nouveaux ids
 
 pilot.py
