@@ -99,6 +99,9 @@ Pour chacune de ces trois étapes, un écart d'une lettre est toléré (distance
 
 (nuille sur ouette	-->	soulge sur ouette)
 
+(Javron --> Javron-les-Chapelles)
+(Chapelles --> Javron-les-Chapelles)
+
 Exemple de résultat :
 
 | Champ          | Contenu                                                                  |
