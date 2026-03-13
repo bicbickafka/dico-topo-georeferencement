@@ -50,6 +50,8 @@ devient :
 
 ![classify](classify.svg)
 
+alternative: check if the dico mentions a list of communes in its introduction
+
 Exemple : Pour l'entrée « Villeneuve », la typologie indique « hameau ». Le script enregistre donc `is_commune: false`, ce qui signale que ce lieu devra être géoréférencé via les communes mentionnées dans sa localisation.
 
 | Champ          | Contenu                                                                  |
