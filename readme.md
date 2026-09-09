@@ -14,7 +14,12 @@ L'application [DicoTopo](https://dicotopo.cths.fr/) a pour vocation de réunir e
 
 
 
+//
 
+fuzzy_high : à vérifier (par exemple : Villaraboux > Villaroux) ;
+fuzzy_medium : à vérifier (par exemple : Feissons-sous-Briancon > Feissons-sur-Salins) ;
+substring_ambiguous : à vérifier (par exemple : Feissons > Feissons-sur-Isère ou Feissons-sur-Salins) ;
+substring_unique : à vérifier (par exemple : Mâcot > Mâcot-la-Plagne).
 
 
 
