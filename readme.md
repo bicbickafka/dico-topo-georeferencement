@@ -209,3 +209,13 @@ https://github.com/chartes/dico-topo-app/blob/dev/db/utils/bibl_gallica.tsv
 
 
 [^1]: Le géoréférencement permet notamment de trier et filtrer les résultats selon un découpage administratif, de regrouper les lieux par commune d'appartenance, et de travailler aisément à l'échelle nationale, ce que la fragmentation en dictionnaires départementaux rendait complexe et laborieux.
+
+// email DT73
+
+y-a til des candidats?
+
+1 .oui --> une/des commune(s) précisé(s) explicitement dans la définition ("commune de/d') ? 
+  a. oui --> le liage est a effectue UNIQUEMENT avec la/les communes explicités
+  b. non --> le liage est a effectuer avec un candidat
+  
+2. non --> aucun liage a effectuer
